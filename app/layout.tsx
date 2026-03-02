@@ -1,24 +1,42 @@
-import type { Metadata } from "next";
-import { DM_Sans, Cormorant_Garamond } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
+  variable: "--font-inter",
 });
 
-const cormorant = Cormorant_Garamond({
-  weight: ["400", "600", "700"],
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
+  variable: "--font-space-grotesk",
 });
 
 export const metadata: Metadata = {
-  title: "Swedish Network Thailand | Coming Soon",
+  title: "Svenska Företagare i Thailand | Affärsnätverk",
   description:
-    "Connecting the Swedish community in Thailand. Coming soon.",
+    "Ett affärsnätverk byggt av företagare – för företagare i Thailand. Varma kontakter, ärliga erfarenheter och praktisk vägledning.",
+  keywords: [
+    "svenska företagare",
+    "thailand",
+    "affärsnätverk",
+    "entreprenörer",
+    "nätverk",
+    "bangkok",
+  ],
+  openGraph: {
+    title: "Svenska Företagare i Thailand",
+    description:
+      "Ett affärsnätverk byggt av företagare – för företagare i Thailand.",
+    type: "website",
+    locale: "sv_SE",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1e40af",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -27,13 +45,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${dmSans.variable} ${cormorant.variable} antialiased`}
-    >
-      <body className="min-h-screen font-sans bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50">
-        {children}
-      </body>
+    <html lang="sv" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }
